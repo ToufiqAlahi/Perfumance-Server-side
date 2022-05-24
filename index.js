@@ -35,8 +35,14 @@ async function run() {
             res.send(service);
         });
 
-        
+        //POSt
+        app.post("/service", async (req, res) => {
+            const newService = req.body;
+            const result = await serviceCollection.insertOne(newService);
+            res.send(result);
+        });
 
+        
 run().catch(console.dir);
 
 app.get("/", (req, res) => {
